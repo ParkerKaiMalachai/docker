@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: ./docker/Dockerfile
+    volumes:
+      - ./app/:/var/www/html
   nginx:
     image: nginx:latest
     ports:
