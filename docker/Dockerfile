@@ -9,11 +9,13 @@ RUN apt-get update && apt-get install -y \
 
 COPY /app/ /app/
 
-WORKDIR /app
+WORKDIR /var/www/html
 
 FROM php:8.1-fpm-alpine
 
-COPY --from=builder /app /var/www/html
+COPY --from=builder /app .
+
+VOLUME [ "/var/www/html" ]
 
 EXPOSE 80
 
